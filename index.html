@@ -1,0 +1,97 @@
+<html>
+<script>
+
+	let persons = {
+		'moussa': {
+			name:'Moussa',
+			job: 'developer',
+			technologies: ['html','css','javascript','php'],
+			cost : 600,
+			experience : 5,
+		},
+		'khalid': {
+			name:'Khalid',
+			job: 'developer',
+			technologies: ['PHP','node.js','java'],
+			cost: 800
+			experience : 8
+		},
+		'maha': {
+			name:'Maha',
+			job: 'developer',
+			technologies: ['PHP','angular','javascript','java'],
+			cost: 500
+			experience : 2
+		}
+	};
+	// trouver le meilleur candidat pour un php sachant que 
+	//exp 5 mettrait 35 jour
+	//exp 8 mettrait 20 jour
+	//exp 5 mettrait 50 jour
+//	let candidatNJS="";
+//	prixNJS=1000
+//	let candidatJS="";
+//	prixJS=1000
+//	for (person in persons){
+//		for (technologie in person.technologies){
+//			if (technologie=="node.js"){
+//				if (person.cost<prixNJS){
+//					prixNJS=person.cost;
+//					candidatNJS=person.name;
+//				}
+//			}
+//			if (technologie=="javascript"){
+//				if (person.cost<prixJS){
+//					prixJS=person.cost;
+//					candidatJS=person.name;
+//				}
+//			}
+//		}
+//	}
+//	console.log(candidatJS);
+//	console.log(candidatNJS);
+let nodejsDeveloper = [];
+let bestNodejsCandidateCost = 0;
+let bestNodejsCandidate = null;
+Object.keys(persons).foreach(id=> {
+	if (persons[id].technologies.includes('node.js')){
+		nodejsDeveloper.push(persons[id])
+	}
+})
+	nodejsDeveloper.foreach(nodejsDeveloper=> {
+		bestNodejsCandidateCost = nodejsDeveloper[0].cost;
+		if (nodejsDeveloper.cost< bestNodejsCandidateCost) {
+			bestNodejsCandidateCost = nodejsDeveloper[iteration].cost;
+			bestNodejsCandidate = nodejsDeveloper;
+		}
+	});
+
+	console.log(bestNodejsCandidate);
+
+let getBestCandidate = funciton (technology){
+	let developers = [];
+	let getBestCandidateCost = 0;
+	let bestCandidate = null;
+
+	Object.keys(persons).foreach(id=>{
+		if(persons[id].technologies.includes(technology)){
+			developers.push(persons[id]);
+		}
+	})
+
+	developers.foreach((nodejsDeveloper,iteration)=>{
+		if (iteration ===0){
+			bestCandidateCost = developers[0].cost;
+			bestCandidate = nodejsDeveloper;
+		}
+
+		if (nodejsDeveloper.cost<bestCandidateCost){
+			bestNodejsCandidateCost = developers[iteration].cost;
+			bestCandidate=nodejsDeveloper;
+		}
+	});
+
+	console.log(bestCandidate);
+}
+</script>
+</html>
