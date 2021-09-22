@@ -1,97 +1,81 @@
 <html>
+<form>
+	<div>
+		<label for="name">Name</label>
+		<input type="text" name="name" id="name">
+	</div>
+	<div>
+		<label for="cars">Cars</label>
+		<select id="cars" name="cars">	
+		</select>
+	</div>
+	<div>
+		<input type="submit" name="person">
+	</div>
+</form>
+<script src ="./jquery-3.6.0.js"></script>
 <script>
 
-	let persons = {
-		'moussa': {
-			name:'Moussa',
-			job: 'developer',
-			technologies: ['html','css','javascript','php'],
-			cost : 600,
-			experience : 5,
-		},
-		'khalid': {
-			name:'Khalid',
-			job: 'developer',
-			technologies: ['PHP','node.js','java'],
-			cost: 800
-			experience : 8
-		},
-		'maha': {
-			name:'Maha',
-			job: 'developer',
-			technologies: ['PHP','angular','javascript','java'],
-			cost: 500
-			experience : 2
+	const cars = [
+		{brand:'Peugeot', make: '208'},
+		{brand:'Renault', make: 'clio'},
+		{brand:'Citroen', make: 'c3'},
+		{brand:'Peugeot', make: '3008'},
+		{brand:'Citroen', make: 'c4'},
+		{brand:'Peugeot', make: '308'},
+		{brand:'Peugeot', make: '5008'},
+		{brand:'Peugeot', make: '508'}
+	];
+	//let templateCars ="";
+	//const prototype=`<option value="__car__">__car__</option> \n`;
+	//const prototypeBrand=`<optgroup label="__brand__"> \n`;
+	//let arrayCheck=[];
+
+	//for (var i=0;i<cars.length;i++){
+	//	if(!arrayCheck.includes(cars[i].brand)){
+	//		arrayCheck.push(cars[i].brand);
+	//		templateCars += prototypeBrand.replaceAll("__brand__",cars[i].brand);
+	//		for (var t=0;t<cars.length;t++){
+	//			if(cars[i].brand==cars[t].brand){
+	//				templateCars += prototype.replaceAll("__car__",cars[t].make);
+	//			}
+	//		}
+	//		templateCars += "</optgroup>\n"; 
+	//	}
+	//}
+	let sortedCars = {};
+	cars.forEach(car=> {
+		if (sortedCars[car.brand] === undefined){
+			sortedCars[car.brand] =[];
 		}
-	};
-	// trouver le meilleur candidat pour un php sachant que 
-	//exp 5 mettrait 35 jour
-	//exp 8 mettrait 20 jour
-	//exp 5 mettrait 50 jour
-//	let candidatNJS="";
-//	prixNJS=1000
-//	let candidatJS="";
-//	prixJS=1000
-//	for (person in persons){
-//		for (technologie in person.technologies){
-//			if (technologie=="node.js"){
-//				if (person.cost<prixNJS){
-//					prixNJS=person.cost;
-//					candidatNJS=person.name;
-//				}
-//			}
-//			if (technologie=="javascript"){
-//				if (person.cost<prixJS){
-//					prixJS=person.cost;
-//					candidatJS=person.name;
-//				}
-//			}
-//		}
-//	}
-//	console.log(candidatJS);
-//	console.log(candidatNJS);
-let nodejsDeveloper = [];
-let bestNodejsCandidateCost = 0;
-let bestNodejsCandidate = null;
-Object.keys(persons).foreach(id=> {
-	if (persons[id].technologies.includes('node.js')){
-		nodejsDeveloper.push(persons[id])
-	}
-})
-	nodejsDeveloper.foreach(nodejsDeveloper=> {
-		bestNodejsCandidateCost = nodejsDeveloper[0].cost;
-		if (nodejsDeveloper.cost< bestNodejsCandidateCost) {
-			bestNodejsCandidateCost = nodejsDeveloper[iteration].cost;
-			bestNodejsCandidate = nodejsDeveloper;
-		}
+
+		sortedCars[car.brand].push(car.make);
 	});
+	console.log(sortedCars);
 
-	console.log(bestNodejsCandidate);
+	Object.keys(sortedCars).forEach(brand =>{
+		$(`select`).append(`<optgroup label='${brand}'></optgroup>`);
 
-let getBestCandidate = funciton (technology){
-	let developers = [];
-	let getBestCandidateCost = 0;
-	let bestCandidate = null;
-
-	Object.keys(persons).foreach(id=>{
-		if(persons[id].technologies.includes(technology)){
-			developers.push(persons[id]);
-		}
+		sortedCars.brand.forEach(car => {
+			$(`optgroup[label=${brand}]`).append(
+				`<option value='${car.make}'>${brand}'></optgroup>`);
+		})
 	})
 
-	developers.foreach((nodejsDeveloper,iteration)=>{
-		if (iteration ===0){
-			bestCandidateCost = developers[0].cost;
-			bestCandidate = nodejsDeveloper;
-		}
+	//$('#cars').append(templateCars);
 
-		if (nodejsDeveloper.cost<bestCandidateCost){
-			bestNodejsCandidateCost = developers[iteration].cost;
-			bestCandidate=nodejsDeveloper;
-		}
-	});
-
-	console.log(bestCandidate);
-}
+	let template = `
+	<div>
+		<label for="age">Age</label>
+		<input type="text" name="age" id="age">
+	</div>
+	`;
+	$('#name').parent().after(template);
+	let templateDob='';
+	for(var i=1980;i<=2001;i++){
+		templateDob+=`<option value="${i}">${i}</option> \n`
+	}
+	console.log(templateDob);
+	$('#dob').append(templateDob);
 </script>
 </html>
