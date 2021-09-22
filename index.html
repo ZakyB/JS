@@ -5,8 +5,18 @@
 		<input type="text" name="name" id="name">
 	</div>
 	<div>
+		<label for="portes">nombre de portes</label>
+		2: <input type="radio" name="portes" id="portes" value = "2">
+		4: <input type="radio" name="portes" id="portes" value = "4">
+		
+	</div>
+	<div>
 		<label for="cars">Cars</label>
-		<select id="cars" name="cars">	
+		<select id="cars" name="cars">
+			si je coche bouton 2->afficher voitures deux portes
+			sinon afficher les autres
+			option null par defaut 
+			option null selectionner->select en rouge
 		</select>
 	</div>
 	<div>
@@ -17,7 +27,7 @@
 <script>
 
 	const cars = [
-		{brand:'Peugeot', make: '208'},
+		{brand:'Peugeot', make: '208',porte },
 		{brand:'Renault', make: 'clio'},
 		{brand:'Citroen', make: 'c3'},
 		{brand:'Peugeot', make: '3008'},
